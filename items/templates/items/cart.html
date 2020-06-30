@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart_tags %}
+
+{% block css_style %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/cart.css' %}" media="screen" title="no title" charset="utf-8">
+{% endblock %}
+{% block content %}
+    <div class="shopping-cart" style="height:{% cart 60 150 carts %}px">
+      <!-- Title -->
+      <div class="title">
+        Shopping Bag
+      </div>
+
+      <!-- Product #1 -->
+      {% for cart in carts %}
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn"></span>
+          <span class="like-btn"></span>
+        </div>
+
+        <div class="image">
+          <img src="{{ cart.item.image.url }}" alt=""height="80%" width="40%" />
+        </div>
+
+        <div class="description">
+          <span>{{ cart.item.name }}</span>
+          <span></span>
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" id="{{ cart.pk }}" type="button" name="button">
+            <img src="{% static 'assets/img/cart/plus.svg' %}" alt="" />
+          </button>
+          <input type="text" name="name" value="{{ cart.item_quantity }}">
+          <button class="minus-btn" id="{{ cart.pk }}" type="button" name="button">
+            <img src="{% static 'assets/img/cart/minus.svg' %}" alt="" />
+          </button>
+        </div>
+
+        <div class="total-price">Rs. {% multiplier cart.item_quantity cart.item.revised_cost %}</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="remove-button"><button type="button" id="{{ cart.pk }}" class="delete-btn" style="background-color:red; width:100%; font-color:white;" name="button">Remove</button></div>
+    </div>
+
+      {% empty %}
+      <div class="item">
+          No Item in Cart
+        </div>
+      {% endfor %}
+    </div>
+{% endblock %}
+    {% block scripting %}
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $('.minus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+            var pk = $(this).closest(".minus-btn").attr("id");
+    		if (value > 1) {
+    			value = value - 1;
+    		} else {
+    			value = 0;
+    		}
+            $.ajax({
+                url: '{% url "items:update_cart" %}',
+                data: {
+                  'pk': pk,
+                  'value':value,
+                  'remove':0,
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                dataType: 'json',
+                type:'POST',
+                success: function (data) {
+                    location.reload();
+                }
+              });
+        $input.val(value);
+
+    	});
+
+        $('.delete-btn').on('click', function(e) {
+            var pk = $(this).closest(".delete-btn").attr("id");
+              $.ajax({
+                  url: '{% url "items:update_cart" %}',
+                  data: {
+                    'pk': pk,
+                    'value':0,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                  },
+                  dataType: 'json',
+                  type:'POST',
+                  success: function (data) {
+                      location.reload();
+                  }
+                });
+      	});
+
+    	$('.plus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+            var pk = $(this).closest(".plus-btn").attr("id");
+    		if (value < 100) {
+      		value = value + 1;
+            }
+            else {
+                value =100;
+            }
+            $.ajax({
+                url: '{% url "items:update_cart" %}',
+                data: {
+                  'pk': pk,
+                  'value':value,
+                  'remove':0,
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                dataType: 'json',
+                type:'POST',
+                success: function (data) {
+                    location.reload();
+                }
+              });
+    		$input.val(value);
+    	});
+
+      $('.like-btn').on('click', function() {
+        $(this).toggleClass('is-active');
+      });
+    </script>
+  {% endblock %}

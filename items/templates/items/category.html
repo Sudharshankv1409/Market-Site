@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="product_list section_padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="product_list">
+                        <div class="row">
+                            {% for item in items %}
+                                <div class="col-md-3 col-md-3">
+                                    <div class="single_product_item">
+                                        <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                        <h3> <a href="single-product.html">{{ item.name }}</a> </h3>
+                                       <div class="price">
+                                                <ul style="font-size:30px;">
+                                                    <li>${{ item.revised_cost }}</li>
+                                                </ul>
+                                       </div><br>
+                                       <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
+                                           <center><button type="button" name="button" id="{{item.pk}}" class="btn hero-btn cart_button">Add To Cart</button></center>
+                                       </div>
+                                       </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="load_more_btn text-center">
+                            <a href="#" class="btn_3">Load More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product list part end-->
+
+    <!-- client review part here -->
+        <!-- client review part end -->
+
+    <!-- Shop Method Start-->
+    <!-- Shop Method End-->
+
+    <!-- subscribe part here -->
+    <section class="subscribe_part section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="subscribe_part_content">
+                        <h2>Get promotions & updates!</h2>
+                        <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
+                        <div class="subscribe_form">
+                            <input type="email" placeholder="Enter your mail">
+                            <a href="#" class="btn_1">Subscribe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- subscribe part end -->
+{% endblock %}
