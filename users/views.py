@@ -11,6 +11,7 @@ from secrets import token_urlsafe
 from django.contrib.sites.shortcuts import get_current_site
 from yuvraj_silk.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail
+from .forms import ForgotPasswordForm
 
 # Create your views here.
 
@@ -33,6 +34,8 @@ class LoginView(View):
             else:
                 messages.warning(request,'Email Not Verified')
                 return redirect(reverse('users:login'))
+        else:
+            messages.warning(request, 'Incorrect Login Information')
         return redirect(reverse('users:login'))
 
 class LogoutView(LoginRequiredMixin, View):
@@ -41,6 +44,37 @@ class LogoutView(LoginRequiredMixin, View):
         logout(request)
         messages.success(request, 'Logged out successfully')
         return redirect(reverse('home'))
+
+@method_decorator(should_not_be_logged_in, name='dispatch')
+class ForgotPasswordView(View):
+    def get(self, request):
+        return render(request, 'users/forgotpassword.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        if not User.objects.filter(email=email).exists():
+            messages.warning(request, 'User with Email Address does not exists')
+            return redirect(reverse('users:forgot_password'))
+
+        token = token_urlsafe(25)
+        domain = get_current_site(request).domain
+        changepassword_link = 'http://{}/users/changepassword?email={}&token={}'.format(domain, email, token)
+        message = """
+        		Hello there!
+        		Here is the link to change your password.
+        		Click Here: {}
+                """.format(changepassword_link)
+        try:
+            send_mail('Change Password', message, 'Yuvraj Silk', [email], fail_silently=False, html_message=None)
+            user = User.objects.get(email=email)
+            user.token = token
+            user.save()
+            messages.success(request,"Password Change Link is sent! Please Check Your Email!")
+            return redirect(reverse('users:login'))
+        except Exception as e:
+            print(e)
+            messages.error(request,'Validation Error')
+            return redirect(reverse('users:forgot_password'))
 
 @method_decorator(should_not_be_logged_in,name = 'dispatch')
 class RegisterView(View):
@@ -95,10 +129,10 @@ class RegisterView(View):
             return redirect(reverse('users:login'))
         except Exception as e:
             print(e)
-            messages.error('Registration Failed')
+            messages.error(request,'Registration Failed')
             return redirect(reverse('users:register'))
 
-class Verify(View):
+class EmailVerifyView(View):
     def get(self, request):
         email = request.GET.get('email')
         token = request.GET.get('token')
@@ -113,4 +147,44 @@ class Verify(View):
         user.token = None
         user.save()
         messages.success(request, 'Email Verified Please Login')
+        return redirect(reverse('users:login'))
+
+class ChangePasswordView(View):
+    def get(self, request):
+        email = request.GET.get('email')
+        token = request.GET.get('token')
+        try:
+            user = User.objects.get(email=email)
+        except Exception as e:
+            print(e,email)
+            messages.error(request, 'Invalid User')
+            return redirect(reverse('users:forgot_password'))
+        if not user.token == token:
+            messages.error(request, 'Invalid Token')
+            return redirect(reverse('users:forgot_password'))
+        return render(request, 'users/changepassword.html')
+
+    def post(self, request):
+        email = request.GET.get('email')
+        token = request.GET.get('token')
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+        try:
+            user = User.objects.get(email=email)
+        except:
+            messages.error(request, 'Invalid User')
+            return redirect(reverse('users:forgot_password'))
+        if not user.token == token:
+            messages.error(request, 'Invalid Token')
+            return redirect(reverse('users:forgot_password'))
+        if not new_password == confirm_password:
+            messages.warning(request, "Passwords don't match")
+            domain = get_current_site(request).domain
+            changepassword_link = 'http://{}/users/changepassword?email={}&token={}'.format(domain, email, token)
+            return redirect(changepassword_link)
+
+        user.set_password(new_password)
+        user.token = None
+        user.save()
+        messages.success(request, 'Password Changed Successfully')
         return redirect(reverse('users:login'))

@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views import View
+from items.models import Item
 
 # Create your views here.
 
-class IndexPage(TemplateView):
-    template_name = 'index.html'
+class IndexPage(View):
+    def get(self,request):
+        items = Item.objects.all()
+        return render(request,'index.html',{'items':items})

@@ -14,7 +14,7 @@ class CategoryPage(View):
 
 class CartPage(LoginRequiredMixin,View):
     def get(self, request):
-        carts = Cart.objects.all()
+        carts = cart = Cart.objects.filter(user=request.user)
         return render(request,'items/cart.html',{'carts':carts})
 
     def post(self, request):
@@ -51,3 +51,12 @@ class CartUpdatePage(LoginRequiredMixin,View):
         return JsonResponse({
                 'status':'success'
         })
+
+class CheckoutPage(LoginRequiredMixin, View):
+    def get(self, request):
+        carts = Cart.objects.filter(user=request.user)
+        total_cost = 0
+        for i in carts:
+            total_cost += i.item_quantity * i.item.revised_cost
+        context = {'carts':carts, 'total_cost':total_cost}
+        return render(request,'items/checkout.html', context)

@@ -150,441 +150,96 @@ function showSlides() {
                 <div class="col-md-12">
                     <div class="product_list">
                         <div class="row">
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/blouses/1.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Blouse</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
+                            {% for item in items %}
+                                {% if item.newly_arrived %}
+                                <div class="col-md-3 col-md-3">
+                                    <div class="single_product_item">
+                                        <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                        <center><h3> <a href="#">{{ item.name }}</a> </h3></center>
+                                        <center><div class="star-rating">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                                             </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
+                                        </div></center>
 
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
+                                       <div class="price">
+                                                <center><ul style="font-size:30px;">
+                                                    <li>Rs. {{ item.revised_cost }}</li>
+
+                                                </ul></center>
+                                            </div>
+                                            <br>
+                                             <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
+                                            <center><a href="#" class="btn hero-btn">ADD TO Cart</a></center>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/bottom/pant/1.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Pant</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                    <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
+                                {% endif %}
+                            {% endfor %}
+                            {% for item in items %}
+                                {% if item.newly_arrived %}
+                                <div class="col-md-3 col-md-3">
+                                    <div class="single_product_item">
+                                        <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                        <center><h3> <a href="#">{{ item.name }}</a> </h3></center>
+                                        <center><div class="star-rating">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                                             </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
+                                        </div></center>
 
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
+                                       <div class="price">
+                                                <center><ul style="font-size:30px;">
+                                                    <li>Rs. {{ item.revised_cost }}</li>
+
+                                                </ul></center>
+                                            </div>
+                                            <br>
+                                             <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
+                                            <center><a href="#" class="btn hero-btn">ADD TO Cart</a></center>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/bottom/skirt/1.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Skirt</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                    <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
+                                {% endif %}
+                            {% endfor %}
+                            {% for item in items %}
+                                {% if item.newly_arrived %}
+                                <div class="col-md-3 col-md-3">
+                                    <div class="single_product_item">
+                                        <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                        <center><h3> <a href="#">{{ item.name }}</a> </h3></center>
+                                        <center><div class="star-rating">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                                             </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
+                                        </div></center>
 
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
+                                       <div class="price">
+                                                <center><ul style="font-size:30px;">
+                                                    <li>Rs. {{ item.revised_cost }}</li>
+
+                                                </ul></center>
+                                            </div>
+                                            <br>
+                                             <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
+                                            <center><a href="#" class="btn hero-btn">ADD TO Cart</a></center>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/bottom/churidar/1.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">churidar</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                    <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/kurtis/embroide/1.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Kurti</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/kurtis/floral/1.jpeg' %}" alt="" class="img-fluid">
-
-
-
-                                 <h3> <a href="#">Floral</a> </h3>
-								 <div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/bottom/churidar/2.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Top</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/kurtis/printed/1.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Printed-tops</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/saree/chiffon saree/2.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">chiffon saree</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/saree/cotton/9.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Cotton-sarees</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                             <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/saree/silk saree/8.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Silk saree</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                         <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/men/dhoti/3.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Dhoti</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                         <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/men/pant/2.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Pant</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                         <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/men/shirt/3.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Shirt</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                         <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/children/boys/3.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Boys-wear</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                         <div class="col-md-3 col-md-3">
-                                <div class="single_product_item">
-                                    <img src="{% static 'assets/img/saree/children/girls/1.jpeg' %}" alt="" class="img-fluid">
-                                    <h3> <a href="#">Girls-wear</a> </h3>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-
-                                   <div class="price">
-                                            <ul style="font-size:30px;">
-                                                <li>$40.00</li>
-
-                                            </ul>
-                                        </div>
-                                       <h3>qty: <input type="number" value="1" min="0" max="1000" step="10"/></h3>
-
-                                         <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="#" class="btn hero-btn">ADD TO Cart</a>
-                                    </div>
-                                </div>
-                            </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

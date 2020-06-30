@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from PIL import Image
 
 # Create your models here.
 
@@ -13,9 +14,17 @@ class Item(models.Model):
     sold = models.PositiveIntegerField(default=0)
     booked = models.PositiveIntegerField(default=0)
     category = models.CharField(choices=(('women','Women'),('men','Men'),('childrenboy','Children Boys'),('childrengirl','Children Girls')), max_length=20)
-    subcategory = models.CharField(choices=(('saree','Saree'),('kurtis','Kurtis'),('pant','Pant'),('shirt','Shirt'),('other','Other')), max_length=20)
+    subcategory = models.CharField(choices=(('saree','Saree'),('kurtis','Kurtis'),('pant','Pant'),('shirt','Shirt'),('top','Top'),('jeans','Jeans'),('chudidhar','Chididhar'),('other','Other')), max_length=20)
     material_type = models.CharField(choices=(('cotton','Cotton'),('silk','Silk'),('wool','Wool'),('leather','Leather'),('other','Other')), max_length=20)
+    newly_arrived = models.BooleanField(default=False)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
+
+        output_size = (300,220)
+        img.resize(output_size)
+        img.save(self.image.path)
 
 class Cart(models.Model):
 

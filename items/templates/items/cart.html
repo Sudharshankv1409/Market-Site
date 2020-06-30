@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/cart.css' %}" media="screen" title="no title" charset="utf-8">
 {% endblock %}
 {% block content %}
-    <div class="shopping-cart" style="height:{% cart 60 150 carts %}px">
+    <div class="shopping-cart">
       <!-- Title -->
       <div class="title">
         Shopping Bag
@@ -18,7 +18,7 @@
       <div class="col-md-12">
       <div class="row">
       {% for cart in carts %}
-     
+
       <div class="item">
         <div class="buttons">
           <span class="delete-btn"></span>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="image">
-          <img src="{{ cart.item.image.url }}" alt=""height="80%" width="40%" />
+          <img src="{{ cart.item.image.url }}" alt=""height="100%" width="40%" />
         </div>
 
         <div class="description">
@@ -57,6 +57,7 @@
       </div>
       </div>
     </div>
+    <a href="{% url 'items:checkout' %}" style="padding-left:25%;padding-right:25%;"><button type="button" class="delete-btn" style="font-size:200%; background-color:red; height:10%; width:50%; font-color:white;" name="button">Checkout</button></a>
 {% endblock %}
     {% block scripting %}
     <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
