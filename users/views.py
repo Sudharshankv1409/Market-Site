@@ -129,7 +129,7 @@ class RegisterView(View):
             return redirect(reverse('users:login'))
         except Exception as e:
             print(e)
-            messages.error(request,'Registration Failed')
+            messages.error(request,'Registration Failed Please Check whether you have entered all the fields')
             return redirect(reverse('users:register'))
 
 class EmailVerifyView(View):
