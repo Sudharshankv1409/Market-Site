@@ -14,7 +14,11 @@
       </div>
 
       <!-- Product #1 -->
+       <div class="container-fluid">
+      <div class="col-md-12">
+      <div class="row">
       {% for cart in carts %}
+     
       <div class="item">
         <div class="buttons">
           <span class="delete-btn"></span>
@@ -49,6 +53,9 @@
           No Item in Cart
         </div>
       {% endfor %}
+      </div>
+      </div>
+      </div>
     </div>
 {% endblock %}
     {% block scripting %}
