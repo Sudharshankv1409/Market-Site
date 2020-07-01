@@ -14,17 +14,17 @@ class Item(models.Model):
     sold = models.PositiveIntegerField(default=0)
     booked = models.PositiveIntegerField(default=0)
     category = models.CharField(choices=(('women','Women'),('men','Men'),('childrenboy','Children Boys'),('childrengirl','Children Girls')), max_length=20)
-    subcategory = models.CharField(choices=(('saree','Saree'),('kurtis','Kurtis'),('pant','Pant'),('shirt','Shirt'),('top','Top'),('jeans','Jeans'),('chudidhar','Chididhar'),('other','Other')), max_length=20)
-    material_type = models.CharField(choices=(('cotton','Cotton'),('silk','Silk'),('wool','Wool'),('leather','Leather'),('other','Other')), max_length=20)
-    newly_arrived = models.BooleanField(default=False)
+    subcategory = models.CharField(choices=(('saree','Saree'),('kurtis','Kurtis'),('pant','Pant'),('shirt','Shirt'),('top','Top'),('chudidhar','Chididhar'),('other','Other')), max_length=20)
+    material_type = models.CharField(choices=(('cotton','Cotton'),('silk','Silk'),('wool','Wool'),('leather','Leather'),('jeans','Jeans'),('other','Other')), max_length=20)
+    newly_arrived = models.BooleanField(default=True)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img = Image.open(self.image.path)
-
-        output_size = (300,220)
-        img.resize(output_size)
-        img.save(self.image.path)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     img = Image.open(self.image.path)
+    #
+    #     output_size = (260,300)
+    #     img = img.resize(output_size)
+    #     img.save(self.image.path)
 
 class Cart(models.Model):
 

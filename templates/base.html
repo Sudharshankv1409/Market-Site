@@ -297,7 +297,7 @@ img {vertical-align: middle;}
                    <div class="container-fluid">
                        <div class="col-xl-12">
                             <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left d-flex">
+                                <div class="main-menu   header-info-left d-flex">
                                     <div class="flag">
                                         <img src="{% static 'assets/img/saree/nav.jpg' %}" alt="" style="width:30px;height:20px;">
                                     </div>
@@ -422,7 +422,7 @@ img {vertical-align: middle;}
 </div>
 <!-- Header End -->
 </header>
-<div class="blog_posts" style="padding-right:20%;padding-left:20%;">
+<div class="blog_posts" style="z-index:9999;padding-left:20%;padding-right:20%;position:fixed;width:100%;">
     {% if messages %}
         {% for message in messages %}
             {% if message.tags == 'error' %}
