@@ -152,6 +152,7 @@ function showSlides() {
                         <div class="row">
                             {% for item in items %}
                                 {% if item.newly_arrived %}
+                                {{ item.image.url }}
                                 <div class="col-md-3 col-md-3">
                                     <div class="single_product_item">
                                         <img src="{{ item.image.url }}" alt="" class="img-fluid">

@@ -12,11 +12,15 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_DIR = os.path.join(BASE_DIR,'static')
+
+credentials = os.path.join(os.path.join(BASE_DIR,'credentials.json'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
+    'gdstorage',
     'items',
     'users',
 ]
@@ -95,6 +100,11 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'sudarshan61kv@gmail.com'
 EMAIL_HOST_PASSWORD = '1409sudu@8095@gmailpasswd'
+
+#Google Drive Configuration
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = credentials
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'Yuvraj_Silks'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -151,3 +161,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 django_heroku.settings(locals())
+
+if __name__ == '__main__':
+    for key in credentials['installed']:
+        print(key, credentials['installed'][key])
