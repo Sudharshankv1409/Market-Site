@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cache %}
 {% load cart_tags %}
 
 {% block css_style %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'assets/css/cart.css' %}" media="screen" title="no title" charset="utf-8">
+    <style>
+        .empty_cart{
+            font-size:35px;
+        }
+    </style>
 {% endblock %}
 {% block content %}
     <div class="shopping-cart">
@@ -19,14 +25,14 @@
       <div class="row">
       {% for cart in carts %}
 
-      <div class="item">
+      <div class="item" id="cart_item-{{cart.id}}">
         <div class="buttons">
           <span class="delete-btn"></span>
           <span class="like-btn"></span>
         </div>
 
         <div class="image">
-          <img src="{{ cart.item.image.url }}" alt=""height="100%" width="40%" />
+          <img src="{{ cart.item.image.url }}" alt="" style="height:75px; width:65px;" />
         </div>
 
         <div class="description">
@@ -50,14 +56,20 @@
 
       {% empty %}
       <div class="item">
-          No Item in Cart
+          <div class="empty_cart">
+              No Item in Cart
+          </div>
         </div>
       {% endfor %}
       </div>
       </div>
       </div>
     </div>
-    <a href="{% url 'items:checkout' %}" style="padding-left:25%;padding-right:25%;"><button type="button" class="delete-btn" style="font-size:200%; background-color:red; height:10%; width:50%; font-color:white;" name="button">Checkout</button></a>
+    {% if carts %}
+        <a href="{% url 'items:checkout' %}" style="padding-left:25%;padding-right:25%;"><button type="button" class="delete-btn" style="font-size:200%; background-color:red; height:10%; width:50%; font-color:white;" name="button">Checkout</button></a>
+    {% else %}
+        <a href="#" style="padding-left:25%;padding-right:25%;"><button type="button" class="delete-btn" style="font-size:200%; background-color:red; height:10%; width:50%; font-color:white;" name="button" onclick="alert('Empty Cart');">Checkout</button></a>
+    {% endif %}
 {% endblock %}
     {% block scripting %}
     <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
@@ -103,7 +115,7 @@
                   dataType: 'json',
                   type:'POST',
                   success: function (data) {
-                      location.reload();
+                      $("#cart_item-"+pk).hide();
                   }
                 });
       	});

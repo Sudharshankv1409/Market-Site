@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'django_cleanup.apps.CleanupConfig',
     'bootstrap3',
-    'gdstorage',
     'items',
     'users',
 ]
@@ -105,8 +105,8 @@ EMAIL_HOST_PASSWORD = '1409sudu@8095@gmailpasswd'
 
 #Google Drive Configuration
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = credentials
-GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'Yuvraj_Silks'
+# GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = credentials
+# GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'Yuvraj_Silks'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

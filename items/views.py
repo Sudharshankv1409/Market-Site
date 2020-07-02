@@ -14,7 +14,7 @@ class CategoryPage(View):
 
 class CartPage(LoginRequiredMixin,View):
     def get(self, request):
-        carts = cart = Cart.objects.filter(user=request.user)
+        carts = Cart.objects.filter(user=request.user).select_related('item','user')
         return render(request,'items/cart.html',{'carts':carts})
 
     def post(self, request):
@@ -54,7 +54,7 @@ class CartUpdatePage(LoginRequiredMixin,View):
 
 class CheckoutPage(LoginRequiredMixin, View):
     def get(self, request):
-        carts = Cart.objects.filter(user=request.user)
+        carts = Cart.objects.filter(user=request.user).select_related('item','user')
         total_cost = 0
         for i in carts:
             total_cost += i.item_quantity * i.item.revised_cost

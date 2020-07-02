@@ -268,6 +268,7 @@ img {vertical-align: middle;}
     -webkit-border-radius: 22px 22px 22px 22px;
     border: 0px solid #000000;
 }
+
 </style>
 
 {% block css_style %}
@@ -325,7 +326,7 @@ img {vertical-align: middle;}
                                            <li><a href="{% url 'users:logout' %}">
                                                <i class="fa fa-user"></i> Logout </a></li>
                                            <li><a href="{% url 'items:cart' %}">
-                                               <i class="fa fa-shopping-cart">Cart</i></a></li>
+                                               <i class="fa fa-shopping-cart"></i></a></li>
                                        {% endif %}
                                       <li><a href="#"><i class="fa fa-account"></i>Help</a></li>
                                    </ul>
@@ -619,7 +620,7 @@ img {vertical-align: middle;}
                 dataType: 'json',
                 type:'POST',
                 success: function (data) {
-                    location.reload();
+                    alert('Successfully added to cart')
                 }
               });
           });

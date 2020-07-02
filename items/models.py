@@ -1,16 +1,18 @@
 from django.db import models
 from users.models import User
 from PIL import Image
-from gdstorage.storage import GoogleDriveStorage
+from django.dispatch import receiver
+from django.db.models.signals import post_delete,post_save,pre_save
+# from gdstorage.storage import GoogleDriveStorage
 
 # Define Google Drive Storage
-gd_storage = GoogleDriveStorage()
+# gd_storage = GoogleDriveStorage()
 
 # Create your models here.
 
 class Item(models.Model):
     name = models.CharField(max_length=40)
-    image = models.ImageField(upload_to="items/images/", blank = True, storage=gd_storage)
+    image = models.ImageField(upload_to="items/images/", blank = True) #storage=gd_storage
     description = models.TextField(blank = True)
     original_cost = models.FloatField()
     revised_cost = models.FloatField()
@@ -38,3 +40,14 @@ class Cart(models.Model):
 
     class Meta:
         unique_together = ('user', 'item',)
+
+
+# Signals
+
+# @receiver(post_delete, sender=Item)
+# def submission_delete(sender, instance, **kwargs):
+#     """
+#     This function is used to delete attachments when a file object is deleted.
+#     Django does not do this automatically.
+#     """
+#     instance.image.delete(False)
