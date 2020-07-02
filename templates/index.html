@@ -1,14 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css_style %}
-<style>
-#item-block:hover{
-    -webkit-box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
-    -moz-box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
-    box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
-}
-</style>
-{% endblock %}
+
 {% block content %}
 
 
@@ -161,7 +153,7 @@ function showSlides() {
                         <div class="row">
                             {% for item in items %}
                                 {% if item.newly_arrived %}
-                                <div id="item-block" class="col-md-3 col-md-3"">
+                                <div id="item-block" class="col-md-3 col-md-3">
                                     <div class="single_product_item">
                                         <center><img src="{{ item.image.url }}" style="height:300px; width:260px;padding-top:30px;" alt="" class="img-fluid"></center>
                                         <center><h3> <a href="#">{{ item.name }}</a> </h3></center>

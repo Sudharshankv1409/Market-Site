@@ -1,5 +1,5 @@
-<!doctype html>
 {% load static %}
+<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
@@ -259,7 +259,15 @@ img {vertical-align: middle;}
 	color:white;
 	font-size:200px;
 }
-
+#item-block:hover{
+    -webkit-box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
+    -moz-box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
+    box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
+    border-radius: 22px 22px 22px 22px;
+    -moz-border-radius: 22px 22px 22px 22px;
+    -webkit-border-radius: 22px 22px 22px 22px;
+    border: 0px solid #000000;
+}
 </style>
 
 {% block css_style %}
@@ -621,6 +629,7 @@ img {vertical-align: middle;}
         {% block scripting %}
 
         {% endblock %}
+
 
   </body>
 </html>
