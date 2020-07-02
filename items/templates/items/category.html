@@ -24,22 +24,6 @@
                                        </div>
                                 </div>
                             {% endfor %}
-                            {% for item in items %}
-                                <div class="col-md-3 col-md-3">
-                                    <div class="single_product_item">
-                                        <center><img src="{{ item.image.url }}" alt="" class="img-fluid"></center>
-                                        <center><h3><a href="single-product.html">{{ item.name }}</a></h3></center>
-                                       <div class="price">
-                                                <center><ul style="font-size:30px;">
-                                                    <li>${{ item.revised_cost }}</li>
-                                                </ul></center>
-                                       </div><br>
-                                       <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                           <center><button type="button" name="button" id="{{item.pk}}" class="btn hero-btn cart_button">Add To Cart</button></center>
-                                       </div>
-                                       </div>
-                                </div>
-                            {% endfor %}
                         </div>
                         <div class="load_more_btn text-center">
                             <a href="#" class="btn_3">Load More</a>

@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css_style %}
+<style>
+#item-block:hover{
+    -webkit-box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
+    -moz-box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
+    box-shadow: 10px 10px 20px -1px rgba(0,0,0,0.62);
+}
+</style>
+{% endblock %}
 {% block content %}
 
 
@@ -152,70 +161,9 @@ function showSlides() {
                         <div class="row">
                             {% for item in items %}
                                 {% if item.newly_arrived %}
-                                {{ item.image.url }}
-                                <div class="col-md-3 col-md-3">
+                                <div id="item-block" class="col-md-3 col-md-3"">
                                     <div class="single_product_item">
-                                        <img src="{{ item.image.url }}" alt="" class="img-fluid">
-                                        <center><h3> <a href="#">{{ item.name }}</a> </h3></center>
-                                        <center><div class="star-rating">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                            </ul>
-                                        </div></center>
-
-                                       <div class="price">
-                                                <center><ul style="font-size:30px;">
-                                                    <li>Rs. {{ item.revised_cost }}</li>
-
-                                                </ul></center>
-                                            </div>
-                                            <br>
-                                             <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                            <center><button type="button" name="button" id="{{item.pk}}" class="btn hero-btn cart_button">Add To Cart</button></center>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            {% endfor %}
-                            {% for item in items %}
-                                {% if item.newly_arrived %}
-                                <div class="col-md-3 col-md-3">
-                                    <div class="single_product_item">
-                                        <img src="{{ item.image.url }}" alt="" class="img-fluid">
-                                        <center><h3> <a href="#">{{ item.name }}</a> </h3></center>
-                                        <center><div class="star-rating">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                            </ul>
-                                        </div></center>
-
-                                       <div class="price">
-                                                <center><ul style="font-size:30px;">
-                                                    <li>Rs. {{ item.revised_cost }}</li>
-
-                                                </ul></center>
-                                            </div>
-                                            <br>
-                                             <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                            <center><button type="button" name="button" id="{{item.pk}}" class="btn hero-btn cart_button">Add To Cart</button></center>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            {% endfor %}
-                            {% for item in items %}
-                                {% if item.newly_arrived %}
-                                <div class="col-md-3 col-md-3">
-                                    <div class="single_product_item">
-                                        <img src="{{ item.image.url }}" alt="" class="img-fluid">
+                                        <center><img src="{{ item.image.url }}" style="height:300px; width:260px;padding-top:30px;" alt="" class="img-fluid"></center>
                                         <center><h3> <a href="#">{{ item.name }}</a> </h3></center>
                                         <center><div class="star-rating">
                                             <ul class="list-inline">
